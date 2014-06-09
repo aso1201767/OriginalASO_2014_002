@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/edtHitokoto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView2"
@@ -30,25 +30,6 @@
 
         <requestFocus />
     </EditText>
-
-    <Button
-        android:id="@+id/btnMente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txthitokoto"
-        android:layout_below="@+id/edtHitokoto"
-        android:text="@string/mennt" />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnMente"
-        android:layout_below="@+id/edtHitokoto"
-        android:layout_marginTop="2dp"
-        android:layout_toRightOf="@+id/btnMente"
-        android:text="@string/submit" />
 
     <TextView
         android:id="@+id/txthitokoto"
@@ -61,11 +42,33 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
+        android:id="@+id/btnSubmit"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnMente"
+        android:layout_alignBottom="@+id/btnMente"
+        android:layout_marginLeft="68dp"
+        android:layout_toRightOf="@+id/btnMente"
+        android:text="@string/submit" />
+
+    <Button
         android:id="@+id/btntyekku"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSubmit"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:text="@string/tyekku" />
+
+    <Button
+        android:id="@+id/btnMente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edtHitokoto"
+        android:layout_below="@+id/edtHitokoto"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/mennt" />
 
 </RelativeLayout>
