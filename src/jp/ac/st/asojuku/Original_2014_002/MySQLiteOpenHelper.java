@@ -1,8 +1,11 @@
 package jp.ac.st.asojuku.Original_2014_002;
 
 import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
@@ -28,6 +31,55 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("dro table Hitokoto");
 		onCreate(db);
+	}
+
+	/**
+	 *引数のフレーズをHitokotoテーブルにインサートすつプライベートメソッド
+	 *@param SQLiteDatabase インサート先DBのインスタンス変数
+	 *@param inputMsg インサートするメッセージ
+	 */
+	public void insertHitokoto(SQLiteDatabase db,String inputMsg){
+
+		String sqlstr =" insert into Hitokoto(phrase) values(' " + inputMsg + " ');";
+			try{
+				//トランザクション開始
+				db.beginTransaction();
+				db.execSQL(sqlstr);
+				//トランザクション成功
+				db.setTransactionSuccessful();
+			} catch (SQLException e){
+				Log.e("ERROR",e.toString());
+			}finally{
+				//トランザクション終了
+				db.endTransaction();
+			}
+		return;
+	}
+
+	/**
+	 * 引数のフレーズをHitokotoテーブルにインサートするプライベートメソッド
+	 * @param SQLiteDatabase インサート先DBのインスタンス変数
+	 */
+	public String selectRandomHitokoto(SQLiteDatabase db){
+
+		String rtString =null;
+
+		String sqlstr = " SELECT _id, phrase FROM Hitokoto ORDER BY RANDOM(); ";
+			try{
+				//トランザクション開始
+				SQLiteCursor cursor = (SQLiteCursor)db.rawQuery(sqlstr, null);
+				if (cursor.getCount()!=0){
+					//カーソル開始位置を先頭にする
+					cursor.moveToFirst();
+					rtString = cursor.getString(1);
+				}
+				cursor.close();
+			} catch (SQLException e){
+				Log.e("ERROR",e.toString());
+			}finally{
+				//既にカーソルもcloseしてあるので、何にもしない
+			}
+		return rtString;
 	}
 
 }
