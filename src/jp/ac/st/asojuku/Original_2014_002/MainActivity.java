@@ -21,7 +21,6 @@ public class MainActivity extends Activity  implements View.OnClickListener{
 		setContentView(R.layout.activity_main);
 	}
 
-	@Override
 	protected void onResume() {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onResume();
@@ -39,6 +38,7 @@ public class MainActivity extends Activity  implements View.OnClickListener{
 		}
 		try{
 			sdb = helper.getWritableDatabase();
+
 		}catch(SQLiteException e){
 			//異常終了
 			return;

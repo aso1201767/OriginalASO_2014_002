@@ -22,14 +22,12 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE IF NOT EXISTS" +
-				"Hitokoto(_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , phrase TEXT)");
-
+		db.execSQL("CREATE TABLE IF NOT EXISTS" + " Hitokoto( _id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , phrase TEXT)");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("dro table Hitokoto");
+		db.execSQL("drop table Hitokoto");
 		onCreate(db);
 	}
 
@@ -54,6 +52,12 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 				db.endTransaction();
 			}
 		return;
+	}
+
+	@Override
+	public SQLiteDatabase getWritableDatabase() {
+		// TODO 自動生成されたメソッド・スタブ
+		return super.getWritableDatabase();
 	}
 
 	/**
