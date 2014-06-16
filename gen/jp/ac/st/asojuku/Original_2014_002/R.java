@@ -26,13 +26,13 @@ public final class R {
     public static final class id {
         public static final int RelativeLayout1=0x7f080000;
         public static final int action_settings=0x7f08000a;
+        public static final int btnDelete=0x7f080008;
         public static final int btnMente=0x7f080005;
         public static final int btnSubmit=0x7f080004;
         public static final int btnback=0x7f080009;
-        public static final int btnsakuzyo=0x7f080008;
         public static final int btntyekku=0x7f080006;
         public static final int edtHitokoto=0x7f080003;
-        public static final int listView=0x7f080007;
+        public static final int lstHitokoto=0x7f080007;
         public static final int textView2=0x7f080001;
         public static final int txthitokoto=0x7f080002;
     }
